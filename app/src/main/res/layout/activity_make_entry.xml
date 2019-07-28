@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    tools:context=".activities.MakeEntry">
+
+    <TextView
+        android:id="@+id/date"
+        android:text="Date"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/date"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/style_btn_layout"
+        android:src="@drawable/ic_edit_white_24dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/titleBox"
+        android:hint="Title"
+        android:layout_toLeftOf="@id/editButton"
+        android:layout_alignBottom="@id/editButton"
+        android:layout_below="@id/date"
+        android:layout_alignTop="@id/editButton"
+        android:background="@drawable/border_back"
+        android:padding="5dp"
+        android:textColor="@drawable/toggle_edit_text_color"
+        android:maxLength="20"
+        android:layout_marginEnd="10dp"
+        android:imeOptions="actionNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/contentBox"
+        android:hint="Content"
+        android:background="@drawable/border_back"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:textColor="@drawable/toggle_edit_text_color"
+        android:layout_below="@id/titleBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:background="@drawable/style_btn_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        style="AVLoadingIndicatorView.Large"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallClipRotateMultipleIndicator" />
+</RelativeLayout>

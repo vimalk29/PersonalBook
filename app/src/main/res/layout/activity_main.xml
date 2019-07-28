@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:paddingBottom="70dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Personal Book"
+            android:textSize="25sp"
+            android:textColor="@color/darkBlueTxt"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Enter Mobile no. to continue"
+            android:textSize="15sp"
+            android:textColor="@color/darkBlueTxt"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etMobile"
+            android:hint="Mobile No."
+            android:textSize="18sp"
+            android:textColor="@color/darkBlueTxt"
+            android:textColorHint="@color/darkBlueTxt"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:background="@drawable/border_back"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etOtp"
+            android:hint="OTP"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlueTxt"
+            android:textColorHint="@color/darkBlueTxt"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:inputType="number"
+            android:visibility="gone"
+            android:background="@drawable/border_back"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnAction"
+            android:text="Send OTP"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="@drawable/button_back"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp" />
+    </LinearLayout>
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        style="AVLoadingIndicatorView.Large"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallClipRotateMultipleIndicator"
+        />
+</RelativeLayout>

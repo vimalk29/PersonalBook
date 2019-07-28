@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "472920281952",
+    "firebase_url": "https://personalbook-6c762.firebaseio.com",
+    "project_id": "personalbook-6c762",
+    "storage_bucket": "personalbook-6c762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472920281952:android:79c9e43c17add3fe",
+        "android_client_info": {
+          "package_name": "com.cdac.personalbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472920281952-nh1g2cok5mq39dvgotpr1geslr31h71t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cdac.personalbook",
+            "certificate_hash": "e00a5d8a5d82cda0a31d317a4453784d613d5d3c"
+          }
+        },
+        {
+          "client_id": "472920281952-kdfqrlv7q2v4tfb62hfd2ql1jom91n5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIcMYxhpRmBMl5mccOivMWeCKm5t-m2P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472920281952-kdfqrlv7q2v4tfb62hfd2ql1jom91n5k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
