@@ -70,7 +70,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void phoneAuthentication() {
         progressbar.show();
-        PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + mobile, 10L, TimeUnit.SECONDS, this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        PhoneAuthProvider.getInstance()
+                .verifyPhoneNumber("+91" + mobile, 10L, TimeUnit.SECONDS,
+                        this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
                 signInWithPhoneAuthCredential(phoneAuthCredential);

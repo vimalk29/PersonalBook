@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.cdac.personalbook.POJO.DiaryContentsPojo;
 import com.cdac.personalbook.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -74,7 +75,7 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
         }
     }
     private void uploadEntry(){
-        //enableButtons(false);
+        enableButtons(false);
         String strTitle, strContent;
         strTitle = titleEditText.getText().toString();
         strContent = contentEditText.getText().toString();
@@ -100,11 +101,17 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
                     getSupportActionBar().setTitle(diaryContentsPojo.getTitle());
                     Toast.makeText(MakeEntry.this,"Entry Uploaded Successfully", Toast.LENGTH_SHORT).show();
                     editButton.setVisibility(View.VISIBLE);
+                    saveButton.setVisibility(View.GONE);
                     enableTextBox(false);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MakeEntry.this,"Entry Upload Failed", Toast.LENGTH_SHORT).show();
+                    saveButton.setVisibility(View.VISIBLE);
                 }
             });
         }
-        enableButtons(true);
     }
     private void getEntry(){
         databaseReference.child("User").child(user.getUid()).child("data")
@@ -151,11 +158,10 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.editButton:
-                Toast.makeText(MakeEntry.this,"Edit",Toast.LENGTH_SHORT).show();
+                saveButton.setVisibility(View.VISIBLE);
                 enableTextBox(true);
                 break;
             case R.id.saveButton:
-                Toast.makeText(MakeEntry.this,"Save",Toast.LENGTH_SHORT).show();
                 uploadEntry();
                 break;
         }
