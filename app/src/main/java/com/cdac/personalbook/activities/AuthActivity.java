@@ -113,7 +113,6 @@ public class AuthActivity extends AppCompatActivity {
                         authImage.setImageResource(R.mipmap.ic_done);
                         sessionManagement.updatePattern(patternEntered);
                         runActivity();
-                        //TODO change Activity
                     }else{
                         patternLockView.setViewMode(PatternLockView.PatternViewMode.WRONG);
                         paraText.setText("Wrong Pattern");
