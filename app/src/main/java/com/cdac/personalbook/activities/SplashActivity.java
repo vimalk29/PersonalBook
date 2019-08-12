@@ -32,6 +32,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        if (!isTaskRoot()) {
+            finish();
+            return;
+        }
+
         Timer timer  = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -47,7 +52,7 @@ public class SplashActivity extends AppCompatActivity {
     public void openNextActivity(){
         SessionManagement sessionManagement = new SessionManagement(SplashActivity.this);
         if(sessionManagement.checkLogin())
-            startActivity(new Intent(SplashActivity.this, DashboardActivity.class));
+            startActivity(new Intent(SplashActivity.this, AuthActivity.class));
         else
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         finish();

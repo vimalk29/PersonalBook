@@ -63,14 +63,13 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
         saveButton.setOnClickListener(this);
         editButton.setOnClickListener(this);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        strDate  = new SimpleDateFormat("dd-MM-YYYY", Locale.getDefault()).format(new Date());
+        strDate  = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
         Log.d("entryId", "onCreate: "+ entryId);
         if(entryId == null){
             editButton.setVisibility(View.GONE);
             enableButtons(true);
             date.setText(strDate);
         }else{
-            enableButtons(false);
             getEntry();
         }
     }
@@ -82,9 +81,11 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
         Log.d("entry", "uploadEntry: "+strTitle+"  "+ strContent);
         if (strContent.length()== 0) {
             Toast.makeText(MakeEntry.this, "Content Can not be Empty", Toast.LENGTH_SHORT).show();
+            enableButtons(true);
         }else{
             if (strTitle.length()== 0){
-                strTitle = strContent.substring(0,5)+"...";
+                int len = (5<strContent.length()?5:strContent.length());
+                strTitle = strContent.substring(0,len)+"...";
                 titleEditText.setText(strTitle);
             }
             if (entryId == null){
@@ -102,6 +103,7 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
                     Toast.makeText(MakeEntry.this,"Entry Uploaded Successfully", Toast.LENGTH_SHORT).show();
                     editButton.setVisibility(View.VISIBLE);
                     saveButton.setVisibility(View.GONE);
+                    enableButtons(true);
                     enableTextBox(false);
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -109,11 +111,13 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(MakeEntry.this,"Entry Upload Failed", Toast.LENGTH_SHORT).show();
                     saveButton.setVisibility(View.VISIBLE);
+                    enableButtons(true);
                 }
             });
         }
     }
     private void getEntry(){
+        enableButtons(false);
         databaseReference.child("User").child(user.getUid()).child("data")
                 .child(entryId).addValueEventListener(new ValueEventListener(){
             @Override
@@ -127,16 +131,18 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
                 getSupportActionBar().setTitle(diaryContentsPojo.getTitle());
                 date.setText(strDate);
                 editButton.setVisibility(View.VISIBLE);
+                saveButton.setVisibility(View.GONE);
+                enableButtons(true);
+                enableTextBox(false);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MakeEntry.this, "Error connecting to database!", Toast.LENGTH_SHORT).show();
-                progressbar.hide();
+                enableButtons(true);
+                enableTextBox(false);
             }
         });
-        enableButtons(true);
-        enableTextBox(false);
     }
 
     private void enableButtons(boolean b) {
@@ -162,6 +168,7 @@ public class MakeEntry extends AppCompatActivity implements View.OnClickListener
                 enableTextBox(true);
                 break;
             case R.id.saveButton:
+                enableButtons(false);
                 uploadEntry();
                 break;
         }

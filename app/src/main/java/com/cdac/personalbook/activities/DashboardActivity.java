@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -84,11 +83,20 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.addButton:
+                addButton.setEnabled(false);
                 startActivity(new Intent(DashboardActivity.this, MakeEntry.class));
                 break;
             case R.id.profileImageButton:
+                profileButton.setEnabled(false);
                 startActivity(new Intent(DashboardActivity.this, Profile.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        profileButton.setEnabled(true);
+        addButton.setEnabled(true);
     }
 }

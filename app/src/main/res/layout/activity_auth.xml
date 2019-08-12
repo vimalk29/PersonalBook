@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/patternView"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Pattern Authentication"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/fingerprintImage"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/ic_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/fingerprintPara"
+            android:text="Please Place your Finger on the Scanner\nOr\nEnter The Pattern"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+    <com.andrognito.patternlockview.PatternLockView
+        android:id="@+id/patternView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="40dp"
+        android:padding="20dp"
+        app:dotCount="3"
+        app:dotNormalSize="18dp"
+        app:dotSelectedSize="20dp"
+        app:correctStateColor="@color/colorCorrectLine"
+        app:normalStateColor="#000"
+        app:wrongStateColor="@color/colorWrongLine"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+</RelativeLayout>

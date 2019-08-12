@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.Profile"/>
+        <activity android:name=".activities.AuthActivity">
+        </activity>
+        <activity android:name=".activities.Profile" />
         <activity android:name=".activities.MakeEntry" />
         <activity
             android:name=".activities.DashboardActivity"
@@ -33,6 +35,7 @@
         </activity>
         <activity
             android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
     </application>

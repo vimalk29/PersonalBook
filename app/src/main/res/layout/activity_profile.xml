@@ -8,7 +8,7 @@
         android:id="@+id/imageViewProfile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/style_text_layout"
+        android:src="@drawable/ic_sync_black_24dp"
         android:layout_width="180dp"
         android:layout_height="180dp" />
 
@@ -17,7 +17,7 @@
         android:text="Save"
         android:textColor="#fff"
         android:textAllCaps="false"
-        android:background="@drawable/style_btn_layout"
+        android:background="@color/colorPrimary"
         android:layout_alignEnd="@id/imageViewProfile"
         android:layout_alignBottom="@id/imageViewProfile"
         android:layout_marginBottom="-10dp"
@@ -49,8 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:background="@drawable/style_text_layout"
             android:layout_weight="8"
+            android:background="#a4D3D3D3"
             android:orientation="vertical"
             android:padding="20dp"
             android:gravity="center_vertical"
@@ -89,8 +89,8 @@
         </LinearLayout>
         <ImageButton
             android:id="@+id/buttonEditProfileInfo"
-            android:src="@drawable/ic_edit_white_24dp"
-            android:background="@drawable/style_btn_layout"
+            android:src="@mipmap/ic_edit_image"
+            android:background="@color/colorPrimary"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -111,7 +111,7 @@
         android:textColor="#fff"
         android:layout_alignParentBottom="true"
         android:text="Logout"
-        android:background="@drawable/style_btn_layout"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <com.wang.avi.AVLoadingIndicatorView

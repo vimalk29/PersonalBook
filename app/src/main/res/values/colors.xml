@@ -9,4 +9,8 @@
 
     <color name="disabled_color">#686666</color>
     <color name="enabled_color">#000000</color>
+
+    <color name="colorCorrectLine">#008000</color>
+    <color name="colorNormalLine">#FFFF</color>
+    <color name="colorWrongLine">#FF0000</color>
 </resources>

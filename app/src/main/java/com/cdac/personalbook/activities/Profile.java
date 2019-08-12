@@ -88,6 +88,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         profilePic.setOnClickListener(this);
         helper = new SelectImageHelper(this, profilePic);
 
+        profilePic.setClipToOutline(true);
         loadData();
     }
 
@@ -109,11 +110,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                     }
                     @Override
                     public void onError() {
+                        Toast.makeText(Profile.this, "Error getting Pofile Image", Toast.LENGTH_SHORT).show();
                         enableButtons(true);
                     }
                 });
-            else
+            else{
+                Toast.makeText(Profile.this, "Tap On the Image to add Profile Pic",Toast.LENGTH_SHORT).show();
                 enableButtons(true);
+            }
 
             tvName.setText(name);
             tvEmail.setText(email);
@@ -141,12 +145,13 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             case R.id.buttonEditProfilePicture:
                 profileImgPath = helper.getURI_FOR_SELECTED_IMAGE();
                 if (profileImgPath != null){
-                    progressbar.show();
+                    enableButtons(false);
                     final StorageReference ref = FirebaseStorage.getInstance().getReference().child("profileImg/"+user.getUid());
                     CommonValues.storageTask = ref.putFile(profileImgPath)
                             .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                    enableButtons(true);
                                     if(task.isSuccessful()){
                                         Toast.makeText(context, "updated successfully", Toast.LENGTH_SHORT).show();
                                         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -161,7 +166,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                                     }
                                 }
                             });
-                    progressbar.hide();
                 }else
                     Toast.makeText(this, "Please select an Image", Toast.LENGTH_SHORT).show();
                 break;
@@ -169,6 +173,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 takeUserInput();
                 break;
             case R.id.buttonLogout:
+                btnLogout.setEnabled(false);
                 LogOut();
                 break;
         }
@@ -248,7 +253,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     private void LogOut() {
         new SessionManagement(this).logOut();
-        startActivity(new Intent(Profile.this, LoginActivity.class));
+        Intent intent = new Intent(Profile.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         finish();
     }
 
